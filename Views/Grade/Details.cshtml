@@ -1,0 +1,43 @@
+﻿@model KTGK.Models.Grade
+
+@{
+    ViewData["Title"] = "Chi tiết lớp học";
+}
+
+<h1>Chi tiết lớp học</h1>
+
+<div>
+    <h4>Lớp học</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GradeId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GradeId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GradeName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GradeName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Model.ImagePath" alt="Ảnh lớp học" style="width: 100px; height: 100px; object-fit: cover;" />
+            }
+            else
+            {
+                <span>Không có ảnh</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.GradeId" class="btn btn-warning">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+</div>
